@@ -39,7 +39,7 @@ cd mercado-liebre
 
 npm install
 
--Ejecutar en modo desarrollo
+- Ejecutar en modo desarrollo
 
 npm start
 
