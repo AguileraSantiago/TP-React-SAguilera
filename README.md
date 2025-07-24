@@ -29,13 +29,13 @@ Permite a los usuarios:
 
 ## Instalación
 
--Clonar repositorio
+- Clonar repositorio
 
 git clone https://github.com/tu-usuario/mercado-liebre.git
 cd mercado-liebre
 
 
--Instalar dependencias
+- Instalar dependencias
 
 npm install
 
@@ -48,7 +48,7 @@ La aplicación estará disponible en http://localhost:3000.
 - Uso
 
 - Login
-- 
+  
 Ingresar un email y contraseña (simulado).
 
 Al iniciar sesión, se guarda el usuario en sessionStorage para mantener la sesión mientras la pestaña esté abierta.
