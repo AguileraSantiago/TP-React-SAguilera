@@ -45,7 +45,7 @@ npm start
 
 La aplicación estará disponible en http://localhost:3000.
 
-- Uso
+## Uso
 
 - Login
   
