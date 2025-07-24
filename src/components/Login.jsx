@@ -1,20 +1,32 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import { Card, Form, Button } from "react-bootstrap";
+import { Form, Button, Card } from "react-bootstrap";
+import { toast } from "react-toastify";
 
 const Login = () => {
-  const [nombre, setNombre] = useState("");
-  const [password, setPassword] = useState("");
   const { login } = useAuth();
   const navigate = useNavigate();
 
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (nombre.trim() !== "") {
-      login(nombre); // 👈 esto guarda el nombre en el contexto
-      navigate("/home"); // redirigimos al home
+
+    if (email.trim() === "") {
+      toast.error("El email es obligatorio");
+      return;
     }
+    if (password.trim() === "") {
+      toast.error("La contraseña es obligatoria");
+      return;
+    }
+
+    // Aquí debería ir lógica real, pero es simulada:
+    login(email);
+    toast.success("Sesión iniciada");
+    navigate("/home");
   };
 
   return (
@@ -26,12 +38,12 @@ const Login = () => {
         <Card.Body>
           <Card.Title className="mb-4 text-center">Iniciar sesión</Card.Title>
           <Form onSubmit={handleSubmit}>
-            <Form.Group className="mb-3" controlId="formNombre">
+            <Form.Group className="mb-3" controlId="formEmail">
               <Form.Control
-                type="text"
-                placeholder="Nombre de usuario"
-                value={nombre}
-                onChange={(e) => setNombre(e.target.value)}
+                type="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </Form.Group>
 

@@ -4,11 +4,18 @@ import { Navbar, Nav, Container, Button, Badge } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { CarritoContext } from "../context/CarritoContext";
-import { AuthContext } from "../context/AuthContext";
+import { useAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const { totalProductos } = useContext(CarritoContext);
-  const { usuario } = useContext(AuthContext);
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/");
+  };
 
   return (
     <Navbar
@@ -50,18 +57,26 @@ const Header = () => {
           <Nav.Link as={Link} to="/infaltables" className="me-3 text-white">
             Imperdibles
           </Nav.Link>
+          <Link to="/home/agregar" className="btn btn-primary me-3">
+            Agregar Producto
+          </Link>
 
-          {usuario ? (
-            <span className="me-3 text-white fw-bold">
-              Bienvenido, {usuario}
-            </span>
+          {user ? (
+            <>
+              <span className="me-3 text-white fw-bold">
+                Bienvenido, {user.email}
+              </span>
+              <Button variant="outline-danger" onClick={handleLogout}>
+                Cerrar sesión
+              </Button>
+            </>
           ) : (
             <Button variant="outline-light" as={Link} to="/" className="me-3">
               Login
             </Button>
           )}
 
-          <Link to="/carrito" className="text-white position-relative">
+          <Link to="/carrito" className="text-white position-relative ms-3">
             <FontAwesomeIcon icon={faShoppingCart} size="lg" />
             {totalProductos > 0 && (
               <Badge

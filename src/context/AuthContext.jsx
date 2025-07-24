@@ -1,24 +1,34 @@
-// src/context/AuthContext.jsx
-import React, { createContext, useState, useContext } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 
-export const AuthContext = createContext();
+const AuthContext = createContext();
+
+export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {
-  const [usuario, setUsuario] = useState(null);
+  const [user, setUser] = useState(null);
 
-  const login = (nombreUsuario) => {
-    setUsuario(nombreUsuario);
+  // Al cargar el contexto, buscamos usuario en sessionStorage
+  useEffect(() => {
+    const storedUser = sessionStorage.getItem("user");
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
+
+  const login = (email) => {
+    const userData = { email };
+    setUser(userData);
+    sessionStorage.setItem("user", JSON.stringify(userData));
   };
 
   const logout = () => {
-    setUsuario(null);
+    setUser(null);
+    sessionStorage.removeItem("user");
   };
 
   return (
-    <AuthContext.Provider value={{ usuario, login, logout }}>
+    <AuthContext.Provider value={{ user, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
 };
-
-export const useAuth = () => useContext(AuthContext);
