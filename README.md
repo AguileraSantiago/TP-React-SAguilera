@@ -29,48 +29,54 @@ Permite a los usuarios:
 
 ## Instalación
 
-Clonar repositorio
+-Clonar repositorio
 
 git clone https://github.com/tu-usuario/mercado-liebre.git
 cd mercado-liebre
 
 
-Instalar dependencias
+-Instalar dependencias
 
 npm install
 
-Ejecutar en modo desarrollo
+-Ejecutar en modo desarrollo
 
 npm start
 
 La aplicación estará disponible en http://localhost:3000.
 
-Uso
-Login
+- Uso
+
+- Login
+- 
 Ingresar un email y contraseña (simulado).
 
 Al iniciar sesión, se guarda el usuario en sessionStorage para mantener la sesión mientras la pestaña esté abierta.
 
 Si la pestaña/navegador se cierra, se pierde la sesión.
 
-Navegación
+- Navegación
+
 La barra superior (Header) tiene enlaces a Home, Ofertas, Imperdibles, Agregar Producto, Carrito y Login/Logout.
 
 La ruta /productos/agregar permite agregar productos nuevos a través de un formulario.
 
-Carrito
+- Carrito
+
 El carrito está protegido: sólo usuarios logueados pueden acceder.
 
 Muestra la cantidad total de productos y permite gestionar el contenido.
 
-Agregar producto
+- Agregar producto
+
 El formulario valida nombre, precio y descripción.
 
 Al enviar, simula el guardado en una API fake (https://fakestoreapi.com/products).
 
 Al agregar con éxito, limpia el formulario y muestra notificación.
 
-Contextos
+- Contextos
+- 
 AuthContext: Gestiona la sesión del usuario, login, logout y persistencia en sessionStorage.
 
 CarritoContext: Maneja los productos agregados al carrito, cantidad total, y acciones de agregar/remover.
