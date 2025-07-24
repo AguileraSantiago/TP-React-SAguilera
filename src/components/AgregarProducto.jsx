@@ -57,7 +57,7 @@ const AgregarProducto = () => {
           <Card.Title className="mb-4">Agregar Producto</Card.Title>
           <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3">
-              <Form.Controln
+              <Form.Control
                 type="text"
                 placeholder="Nombre del producto"
                 name="title"
