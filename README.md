@@ -76,7 +76,7 @@ Al enviar, simula el guardado en una API fake (https://fakestoreapi.com/products
 Al agregar con éxito, limpia el formulario y muestra notificación.
 
 - Contextos
-- 
+  
 AuthContext: Gestiona la sesión del usuario, login, logout y persistencia en sessionStorage.
 
 CarritoContext: Maneja los productos agregados al carrito, cantidad total, y acciones de agregar/remover.
